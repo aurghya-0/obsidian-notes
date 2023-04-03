@@ -53,6 +53,30 @@ Columns:
 - email (varchar(100), not null)
 - role (varchar(20), not null)
 
+Table: job_seekers
+
+Columns:
+- id (integer, primary key, auto-increment)
+- user_id (integer, not null, foreign key to user.id)
+- full_name (varchar(100), not null)
+- phone_number (varchar(20), not null)
+- address (varchar(200), not null)
+- education (varchar(200), not null)
+- major_skill (varchar(100), not null)
+- created_at (timestamp, not null)
+- updated_at (timestamp, not null)
+
+Table: company
+
+Columns:
+- id (integer, primary key, auto-increment)
+- user_id (integer, not null, foreign key to user.id)
+- name (varchar(100), not null)
+- description (text, not null)
+- location (varchar(100), not null)
+- created_at (timestamp, not null)
+- updated_at (timestamp, not null)
+
 Table: job
 
 Columns:
@@ -62,7 +86,8 @@ Columns:
 - qualifications (varchar(500), not null)
 - location (varchar(100), not null)
 - salary_range (varchar(100), not null)
-- employer_id (integer, not null, foreign key to user.id)
+- major_skill (varchar(100), not null)
+- company_id (integer, not null, foreign key to company.id)
 - created_at (timestamp, not null)
 - updated_at (timestamp, not null)
 
@@ -71,7 +96,7 @@ Table: application
 Columns:
 - id (integer, primary key, auto-increment)
 - job_id (integer, not null, foreign key to job.id)
-- applicant_id (integer, not null, foreign key to user.id)
+- job_seeker_id (integer, not null, foreign key to job_seekers.id)
 - status (varchar(20), not null)
 - created_at (timestamp, not null)
 - updated_at (timestamp, not null)
